@@ -1,7 +1,9 @@
 public class Sale {
     private static int sales = 0;
+    private static int compl_sales = 0;
     private int sale_number;
     private Hardware product;
+    private Order order;
     private String fullname;
     private String phone;
     private String date;
@@ -9,21 +11,40 @@ public class Sale {
 
     public Sale(){
         this.sale_number = sales;
-        sales++;
     }
 
     public Sale(Hardware product, String fullname, String phone, String date, double cost){
-        this.sale_number = sales++;
+        this.sale_number = sales;
         this.product = product;
         this.fullname = fullname;
         this.phone = phone;
         this.date = date;
         this.cost = cost;
+    }
+
+    public Sale(Order order, String fullname, String phone, String date, double cost){
+        this.sale_number = compl_sales;
+        this.order = order;
+        this.fullname = fullname;
+        this.phone = phone;
+        this.date = date;
+        this.cost = cost;
+    }
+
+    public static void incrSales(){
         sales++;
+    }
+
+    public static void incrCompSales(){
+        compl_sales++;
     }
 
     public void setProduct(Hardware product){
         this.product = product;
+    }
+
+    public void setOrder(Order order){
+        this.order = order;
     }
 
     public void setFullname(String fullname){

@@ -11,7 +11,7 @@ public class Driver {
     private ArrayList<Sale> comp_sales = new ArrayList<Sale>();
     private boolean done = true;
     private String answer, prod_type, ans2, temp, temp2, name, phone, kind, mn, man, cpu_type;
-    private int year, ram, sata, cores, size, sn;
+    private int year, ram, sata, cores, size, sn, ss;
     private double cost, price, freq;
 
     public void start(){
@@ -21,6 +21,9 @@ public class Driver {
             System.out.println("1. List products");
             System.out.println("2. Add a product");
             System.out.println("3. Order");
+            System.out.println("4. Complete Order");
+            System.out.println("5. Show completed sales");
+            System.out.println("6. Update availability");
             System.out.println("0. Exit");
             answer = scanner.nextLine();
             if(answer.equalsIgnoreCase("1")){
@@ -142,6 +145,7 @@ public class Driver {
                                 sale.setCost(cost);
                                 available.replace(toSell, available.get(toSell) - 1);
                                 sales.add(sale);
+                                Sale.incrSales();
                                 break;
                             }
                             else {
@@ -659,6 +663,99 @@ public class Driver {
                         order.setOrder_date(dateFormat.format(date).toString());
                         order.setCost(sale.getCost());
                         orders.add(order);
+                        break;
+                    }
+                }
+            }
+            else if(answer.equalsIgnoreCase("4")) {
+                Order order = null;
+                Sale final_sale;
+                while (true) {
+                    System.out.println("Please choose Order by number");
+                    for (Order i : orders) {
+                        System.out.println(i.toString());
+                    }
+                    while (true) {
+                        temp = scanner.nextLine();
+                        if (temp.matches("\\d+")) {
+                            ss = Integer.parseInt(temp);
+                            break;
+                        } else {
+                            System.out.println("Invalid data. Try again");
+                        }
+                    }
+                    for (Order i : orders) {
+                        if (i.getOrder_number() == ss) {
+                            order = i;
+                        }
+                    }
+                    if (order == null) {
+                        System.out.println("Sale does not exist");
+                        break;
+                    }
+                    else{
+                        while(true){
+                            System.out.println("Please choose an option");
+                            System.out.println("1. Complete Order");
+                            System.out.println("2. Sale");
+                            System.out.println("0. Exit");
+                            temp = scanner.nextLine();
+                            if(temp.equalsIgnoreCase("1")){
+                                order.changeStatus();
+                                break;
+                            }
+                            else if(temp.equalsIgnoreCase("2")){
+                                final_sale = new Sale(order, order.getFullname(), order.getPhone(), order.getArrive_date(), order.getCost());
+                                comp_sales.add(final_sale);
+                                Sale.incrCompSales();
+                                break;
+                            }
+                            else if(temp.equalsIgnoreCase("0")){
+                                break;
+                            }
+                            else{
+                                System.out.println("Invalid option. Try again");
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+            else if(answer.equalsIgnoreCase("5")){
+                for(Sale i : comp_sales){
+                    System.out.println(i.toString());
+                }
+            }
+            else if(answer.equalsIgnoreCase("6")){
+                Hardware HW = null;
+                while(true) {
+                    for (Hardware i : products) {
+                        System.out.println(i.toString());
+                    }
+                    System.out.println("Please choose an product");
+                    temp = scanner.nextLine();
+                    for(Hardware i : products){
+                        if(temp.equalsIgnoreCase(i.getModel_name())){
+                            HW = i;
+                        }
+                    }
+                    if(HW == null){
+                        System.out.println("The product does not exist");
+                        break;
+                    }
+                    else{
+                        System.out.println(HW.toString());
+                        while(true){
+                            System.out.println("Please give new quantity");
+                            temp2 = scanner.nextLine();
+                            if(temp2.matches("\\d+")){
+                                available.replace(HW, available.get(HW)+Integer.parseInt(temp2));
+                                break;
+                            }
+                            else{
+                                System.out.println("Invalid data. Try again");
+                            }
+                        }
                         break;
                     }
                 }

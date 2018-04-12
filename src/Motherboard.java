@@ -101,4 +101,9 @@ public class Motherboard extends Hardware {
     public int getNos() {
         return nos;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Motherboard supported by " + getCpu_type() + " CPUs with support of " + getRam() + " GB of ram and " + getNos() + " SATA ports";
+    }
 }

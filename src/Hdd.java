@@ -1,5 +1,5 @@
 public class Hdd extends Hardware{
-    private String ram_type;
+    private String hdd_type;
     private double size;
     private int capacity;
     private static final String SSD = "SSD";
@@ -10,13 +10,13 @@ public class Hdd extends Hardware{
         info = "HARDWARE";
     }
 
-    public Hdd(String model_name, int year, String manufacturer, double price, String ram_type, double size, int capacity){
+    public Hdd(String model_name, int year, String manufacturer, double price, String hdd_type, double size, int capacity){
         super(model_name, year, manufacturer, price);
-        if(ram_type.equalsIgnoreCase(SSD)){
-            this.ram_type = SSD;
+        if(hdd_type.equalsIgnoreCase(SSD)){
+            this.hdd_type = SSD;
         }
-        else if(ram_type.equalsIgnoreCase(HDD)){
-            this.ram_type = HDD;
+        else if(hdd_type.equalsIgnoreCase(HDD)){
+            this.hdd_type = HDD;
         }
         else{
             try {
@@ -48,12 +48,12 @@ public class Hdd extends Hardware{
         info = "HARDWARE";
     }
 
-    public void setRam_type(String ram_type){
-        if(ram_type.equalsIgnoreCase(SSD)){
-            this.ram_type = SSD;
+    public void setHdd_type(String hdd_type){
+        if(hdd_type.equalsIgnoreCase(SSD)){
+            this.hdd_type = SSD;
         }
-        else if(ram_type.equalsIgnoreCase(HDD)){
-            this.ram_type = HDD;
+        else if(hdd_type.equalsIgnoreCase(HDD)){
+            this.hdd_type = HDD;
         }
         else{
             try {
@@ -90,8 +90,8 @@ public class Hdd extends Hardware{
         }
     }
 
-    public String getRam_type(){
-        return ram_type;
+    public String getHdd_type(){
+        return hdd_type;
     }
 
     public double getSize() {
@@ -100,5 +100,10 @@ public class Hdd extends Hardware{
 
     public int getCapacity() {
         return capacity;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + " " + getHdd_type() + " with size of " + getSize() + " inches and with capacity " + getCapacity() + " GB";
     }
 }

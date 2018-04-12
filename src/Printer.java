@@ -81,4 +81,9 @@ public class Printer extends Hardware{
     public String getPrinter_type(){
         return printer_type;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Printer with " + getTech() + " technology and " + getPrinter_type() + " printing";
+    }
 }

@@ -73,4 +73,9 @@ public class Gpu extends Hardware{
     public int getGpu_ram(){
         return gpu_ram;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " GPU created by " + getChipset() + " with " + getGpu_ram() + " GB ram";
+    }
 }

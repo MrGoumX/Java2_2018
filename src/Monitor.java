@@ -108,4 +108,9 @@ public class Monitor extends Hardware{
     public String getPorts(){
         return ports;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Monitor type of " + getMonitor_type() + " with size of " + getInches() + " and resolution of " + getResolution() + " with " + getPorts() + " ports";
+    }
 }

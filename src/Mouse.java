@@ -81,4 +81,9 @@ public class Mouse extends Hardware{
     public String getConnection(){
         return connection;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Mouse with " + getTech() + " technology and " + getConnection() + " connection";
+    }
 }

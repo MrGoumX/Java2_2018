@@ -108,4 +108,9 @@ public class Ram extends Hardware{
     public int getFrequency() {
         return frequency;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Ram type of " + getType() + " with capacity of " + getSize() + " at " + getFrequency() + " MHz";
+    }
 }

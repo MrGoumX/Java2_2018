@@ -75,4 +75,9 @@ public class Cpu extends Hardware{
     public boolean getIntegrated_gfx(){
         return integrated_gfx;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " CPU with " + getCores() + " cores at " + getFrequency() + " MHz" + (getIntegrated_gfx() ? " with " : " without ") + "integrated graphics";
+    }
 }

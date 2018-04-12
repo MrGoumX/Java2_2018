@@ -45,4 +45,9 @@ public class Keyboard extends Hardware{
     public String getConnection(){
         return connection;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + " Keyboard with " + getConnection() + " connection";
+    }
 }

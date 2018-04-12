@@ -52,6 +52,6 @@ public abstract class Hardware {
     }
 
     public String toString(){
-        return "Product: " + getModel_name() + " created in year " + getYear() + " by " + getManufacturer() + " priced at " + getPrice();
+        return "Product: " + getModel_name() + " created in year " + getYear() + " by " + getManufacturer() + " priced at " + getPrice() + ", ";
     }
 }

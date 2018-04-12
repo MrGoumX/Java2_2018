@@ -65,4 +65,8 @@ public class Sale {
     public double getCost(){
         return cost;
     }
+
+    public String toString(){
+        return "Sale with ID: " + getSale_number() + " initiated by " + getFullname() + " with phone number " + getPhone() + " for product " + getProduct().getModel_name() + " with cost " + getCost() + " created on " + getDate();
+    }
 }

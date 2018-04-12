@@ -1,7 +1,7 @@
 public class Cpu extends Hardware{
     private double frequency;
     private int cores;
-    private boolean integrated_gfx;
+    private Boolean integrated_gfx;
 
     public Cpu(){
         super();
@@ -72,7 +72,7 @@ public class Cpu extends Hardware{
         return cores;
     }
 
-    public boolean getIntegrated_gfx(){
+    public Boolean getIntegrated_gfx(){
         return integrated_gfx;
     }
 

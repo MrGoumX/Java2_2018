@@ -1,7 +1,7 @@
 public class Order {
     private static int orders = 0;
     private int order_number;
-    private Hardware product;
+    private Sale sale;
     private String fullname;
     private String phone;
     private String order_date;
@@ -15,9 +15,9 @@ public class Order {
         orders++;
     }
 
-    public Order(Hardware product, String fullname, String phone, String order_date, String arrive_date, double cost, String status){
+    public Order(Sale sale, String fullname, String phone, String order_date, String arrive_date, double cost, String status){
         this.order_number = orders;
-        this.product = product;
+        this.sale = sale;
         this.fullname = fullname;
         this.phone = phone;
         this.order_date = order_date;
@@ -27,8 +27,8 @@ public class Order {
         orders++;
     }
 
-    public void setProduct(Hardware product){
-        this.product = product;
+    public void setSale(Sale sale){
+        this.sale = sale;
     }
 
     public void setFullname(String fullname){
@@ -39,7 +39,7 @@ public class Order {
         this.phone = phone;
     }
 
-    public void setOrder_number(String order_date){
+    public void setOrder_date(String order_date){
         this.order_date = order_date;
     }
 
@@ -57,8 +57,8 @@ public class Order {
         }
    }
 
-    public Hardware getProduct() {
-        return product;
+    public Sale getSale() {
+        return sale;
     }
 
     public int getOrder_number() {
@@ -89,4 +89,7 @@ public class Order {
         return phone;
     }
 
+    public String toString(){
+        return "Sale with ID: " + getOrder_number() + " initiated by " + getFullname() + " with phone number " + getPhone() + " for sale " + getSale().toString() + " with cost " + getCost() + " created on " + getOrder_date() + " expected to be delivered by " + getArrive_date();
+    }
 }
